@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+
+    <title>{% block title %} {% endblock %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>Home-IBT</title>
+    <meta name="keywords" content="computer">
+    <meta name="description" content="">
+    <meta name="author" content="Americ Allison">
+
+    <!-- Site Icons -->
+
+
+    <!-- Bootstrap CSS -->
+    {{ bootstrap.load_css() }}
+     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
+           rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    {% endblock %}
+</head>
+
+<!--Start top nav -->
+<body style="font-family:Montserrat">
+        <!-- Start main nav -->
+   <nav class="navbar p-4 navbar-expand-md navbar-dark sticky-top bg-dark">
+  <a class="navbar-brand" href="{{ url_for('index') }}">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Teaching Model</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#">Staff</a>
+      </li>
+          <li class="nav-item">
+        <a class="nav-link" href="#">Labs Tour</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Vocational Programs
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Computer Literacy</a>
+            <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Web Design & Design Thinking</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Python Programming</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Networking Fundamentals</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline form-group text-end p-1 my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+  </div>
+</nav>
+    <!-- End main nav -->
+
+    <!--Create content block for contents-->
+        {% block content %}
+        {% from 'bootstrap5/utils.html' import render_messages %}
+        <div class="container-fluid text-center">
+            {{ render_messages() }}
+        </div>
+
+        <!--Create and end page_content block for main contents-->
+        {% block page_content %}{% endblock %}
+        <!--End content block-->
+        {% endblock %}
+         <hr>
+
+        <!-- Start newsletter -->
+		<section class="bg-light">
+      <div class="container py-4">
+        <div class="row justify-content-center py-5">
+          <div class="col-md-6">
+          	<h2 style="font-size: 22px;" class="mb-0">Subcribe to our Newsletter</h2>
+          	<span>Get e-mail updates about our latest shops and special offers</span>
+          </div>
+          <div class="col-md-6 align-items-center">
+            <form action="#">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Enter email address">
+                <input type="submit" value="Subscribe" class="px-3 btn">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+<!-- End newsletter -->
+
+
+
+        <footer>
+            <div class="container-fluid text-white p-5 bg-dark">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5 class="h5 text-white">
+                            Institute of Basic Technology
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li><a class="text-white text-decoration-none" href="">About Us</a></li>
+                            <li><a class="text-white text-decoration-none" href="">Courses</a></li>
+                        </ul>
+                    </div>
+                     <div class="col-md-3">
+                        <h5 class="h5 text-white">
+                            Institute of Basic Technology
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li><a class="text-white text-decoration-none" href="">About Us</a></li>
+                            <li><a class="text-white text-decoration-none" href="">Courses</a></li>
+                        </ul>
+                    </div>
+                     <div class="col-md-3">
+                        <h5 class="h5 text-white">
+                            Institute of Basic Technology
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li><a class="text-white text-decoration-none" href="">About Us</a></li>
+                            <li><a class="text-white text-decoration-none" href="">Courses</a></li>
+                        </ul>
+                    </div>
+                     <div class="col-md-3">
+                        <h5 class="h5 text-white">
+                            Institute of Basic Technology
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li><a class="text-white text-decoration-none" href="">About Us</a></li>
+                            <li><a class="text-white text-decoration-none" href="">Courses</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+
+<!-- Start scripts -->
+{% block scripts %}
+        {{ bootstrap.load_js() }}
+        {{ moment.include_moment() }}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="{{ url_for('static', filename='jscript/google-map.js')}}"></script>
+    <script src="{{ url_for('static', filename='jscript/main.js')}}"></script>
+        <!-- Start Google Translate API script -->
+    <script type="text/javascript">
+                            function googleTranslateElementInit() {
+                            new google.translate.TranslateElement (
+                            {pageLanguage: 'en'},
+                            'google_translate_element'
+                            );
+                            }
+                        </script>
+
+                        <script type="text/javascript"
+                                src="https://translate.google.com/translate_a/element.js?
+cb=googleTranslateElementInit">
+
+                        </script>
+
+<!-- End Google Translate API script -->
+{% endblock %}
+<!-- End scripts -->
+</body>
+</html>
