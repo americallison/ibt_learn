@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block page_content %}
+
+{% from 'bootstrap5/form.html' import render_form,
+    render_field, render_hidden_errors%}
+
+<div class="container mt-4 p-4 m-3">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-lg-4 shadow-sm p-4 rounded card">
+            <h4 class="h5 text-center"><i class="fa fa-sign-in"></i>&nbsp;Login</h4>
+            <form action="#" enctype="multipart/form-data">
+<hr>
+        {{ form.hidden_tag() }}
+        {{ render_hidden_errors(form) }}
+        {{ render_field(form.user_name) }}
+        {{ render_field(form.password) }}
+        {{ render_field(form.remember_me) }}
+       {{ render_field(form.sign_in,
+            class="primary-btn mt-2 mb-3") }}
+    </form>
+
+    <p><a class="text-info" href="#">
+           Forgot username or password?</a>
+    </p>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+
+
+{% endblock %}

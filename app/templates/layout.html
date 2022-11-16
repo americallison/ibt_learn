@@ -19,13 +19,14 @@
 
     <!-- Site Icons -->
 
-
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <!-- Bootstrap CSS -->
     {{ bootstrap.load_css() }}
      <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
            rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+
 
 
     <!-- Font Awesome -->
@@ -42,10 +43,10 @@
 </head>
 
 <!--Start top nav -->
-<body style="font-family:Montserrat">
+<body style="font-family: 'Verdana' ">
         <!-- Start main nav -->
-   <nav class="navbar p-4 navbar-expand-md navbar-dark sticky-top bg-dark">
-  <a class="navbar-brand" href="{{ url_for('index') }}">Navbar</a>
+   <nav class="navbar p-3 navbar-expand-md navbar-dark sticky-top bg-dark">
+  <a class="navbar-brand" href="{{ url_for('index') }}">IBT</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
           aria-expanded="false" aria-label="Toggle navigation">
@@ -55,21 +56,24 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{ url_for('index') }}">
+            <i class="fa fa-home"></i>&nbsp;Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Teaching Model</a>
+        <a class="nav-link" href="{{ url_for('teaching_model') }}">
+             <i class="fa fa-university"></i>&nbsp;Teaching Model</a>
       </li>
         <li class="nav-item">
-        <a class="nav-link" href="#">Staff</a>
+            <a class="nav-link" href="{{ url_for('staff') }}"><i class="fa fa-users"></i>&nbsp;Staff</a>
       </li>
           <li class="nav-item">
-        <a class="nav-link" href="#">Labs Tour</a>
+        <a class="nav-link" href="{{ url_for('labs') }}">
+             <i class="fa fa-flask"></i>&nbsp;Labs</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Vocational Programs
+           <i class="fa fa-code"></i>&nbsp;Programs
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Computer Literacy</a>
@@ -81,13 +85,25 @@
             <a class="dropdown-item" href="#">Networking Fundamentals</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+         <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('donate') }}">
+             <i class="fa fa-gift"></i>&nbsp;Donate</a>
       </li>
+         <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('events') }}">Events</a>
+      </li>
+        {% if current_user.is_anonymous %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('login') }}"><i class="fa fa-sign-in"></i>&nbsp;Login</a>
+      </li>
+        {% else %}
+        <li class="nav-item">
+        <a class="nav-link" href="">Logout</a>
+      </li>
+        {% endif %}
     </ul>
     <form class="form-inline form-group text-end p-1 my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 
   </div>
@@ -119,7 +135,7 @@
             <form action="#">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Enter email address">
-                <input type="submit" value="Subscribe" class="px-3 btn">
+                <input type="submit" value="Subscribe" class="my_color px-3">
               </div>
             </form>
           </div>
@@ -127,8 +143,6 @@
       </div>
     </section>
 <!-- End newsletter -->
-
-
 
         <footer>
             <div class="container-fluid text-white p-5 bg-dark">
@@ -162,15 +176,29 @@
                     </div>
                      <div class="col-md-3">
                         <h5 class="h5 text-white">
-                            Institute of Basic Technology
+                            Contact Us
                         </h5>
                         <ul class="list-unstyled">
                             <li><a class="text-white text-decoration-none" href="">About Us</a></li>
                             <li><a class="text-white text-decoration-none" href="">Courses</a></li>
                         </ul>
+                <ul class="list-group list-group-horizontal list-unstyled">
+                <li class="text-center list-group-item">
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                </li>
+                    <li class="list-group-item">
+                    <a href=""><i class="fa fa-instagram"></i></a>
+                </li>
+                    <li class="list-group-item">
+                    <a href=""><i class="fa fa-youtube"></i></a>
+                </li>
+                    <li class="list-group-item">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                </li>
+                </ul>
+            </div>
                     </div>
                 </div>
-            </div>
         </footer>
 
 

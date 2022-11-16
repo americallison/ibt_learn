@@ -15,6 +15,8 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(50), unique=True, nullable=False)
     user_name = db.Column(db.String(50), unique=True, nullable=False)
     contact = db.Column(db.Integer, nullable=False)
+    program = db.Column(db.String, nullable=False)
+    address = db.Column(db.String, nullable=False, default='Kpelle Town')
     password = db.Column(db.String(25), nullable=False)
 
     def __repr__(self):
