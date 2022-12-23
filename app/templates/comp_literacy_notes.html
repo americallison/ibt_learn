@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block page_content %}
+
+<div class="container text-center mt-5">
+    <h4 class="h4 text-uppercase">Computer Literacy Notes</h4><hr>
+</div>
+
+<div class="container mt-4">
+        <div class="col-md-1"></div>
+        <div class="col-md-12 col-lg-12 mb-2 col-12">
+            <div class="row gx-4">
+    {% for note in note_category.items %}
+            <div class="col-md-3 col-6 shadow-sm gx-4 py-1 mb-3">
+    <a href="{{ url_for('static', filename='notes/' + note.note_content)}}"
+       target="_blank"><i class="fa fa-book"></i>&nbsp;{{ note.note_name }}</a><br>
+         <span><i class="fa fa-calendar"></i>
+             &nbsp;{{ moment(note.upload_time).format('LL') }}
+             &nbsp;</span><br>
+         <span><i class="fa fa-clock-o"></i>
+             &nbsp;{{ moment(note.upload_time).fromNow().format('LLL') }}
+         </span>
+                <p class="mt-1 p-1">{{ note.note_description }}</p>
+            </div>
+    {% endfor %}
+        </div>
+         <div class="col-md-1"></div>
+    </div>
+</div>
+
+<div class="text-center">
+    <a href="{{ url_for('comp_literacy_notes', page=note_category.prev_num) }}"
+       class="btn-sm primary-btn
+       {% if note_category.page == 1 %}disabled{% endif %}">
+        <i class="fa fa-arrow-left"></i>&nbsp;Prev
+    </a>
+
+{% for page_num in note_category.iter_pages() %}
+        {% if page_num %}
+
+        <div class="d-md-inline text-center d-inline d-lg-inline mb-2 ml-auto">
+            {% if note_category.page == page_num %}
+            <a href="{{ url_for('comp_literacy_notes', page=page_num) }}"
+               class="primary-btn text-white">
+                <strong>{{ page_num }}</strong>
+            </a>
+            {% else %}
+            <a href="{{ url_for('comp_literacy_notes', page=page_num) }}"
+               class="primary-btn text-light">
+                {{ page_num }}
+            </a>
+            {% endif %}
+        {% else %}
+            ...
+        {% endif %}
+    {% endfor %}
+    <a href="{{ url_for('comp_literacy_notes', page=note_category.next_num) }}"
+       class="primary-btn btn-sm
+       {% if note_category.page == note_category.pages %}disabled{% endif %}">
+        Next&nbsp;<i class="fa fa-arrow-right"></i>
+    </a>
+</div>
+</div>
+<p class="text-center mt-3">
+   Page {{ note_category.page }} of {{ note_category.pages }}
+</p>
+<hr>
+
+
+{% endblock %}

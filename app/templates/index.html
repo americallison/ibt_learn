@@ -10,21 +10,24 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="..." class="d-block w-100" alt="...">
+        <img src="{{ url_for('static', filename='images/library.jpg')}}"
+             class="d-block img_height w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Welcome to Institute of Basic Technology</h5>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
+        <img src="{{ url_for('static', filename='images/chemistry_lab.jpg')}}"
+             class="d-block img_height w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Second slide label</h5>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
+        <img src="{{ url_for('static', filename='images/library.jpg')}}"
+             class="d-block img_height w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Third slide label</h5>
           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -44,46 +47,35 @@
 
 <div class="container-fluid">
         <div class="text-center mt-4">
-                <a class="btn btn-info text-white btn-outline-white p-2 rounded" href="#">Partnering Schools</a>
-                <a class="btn btn-info text-white p-2 rounded" href="#">Read Our Articles</a>
-        </div>
-    <div class="container-fluid text-dark p-4 rounded mt-3">
+                <a class="btn-ibt p-3 mt-2 text-decoration-none rounded" href="#">Partnering Schools</a>
+                <a class="btn-ibt p-3 mt-2 text-decoration-none rounded" href="#">Read Our Articles</a>
+        </div><hr>
+    <div class="container-fluid text-dark p-4 rounded mt-2">
         <div class="row">
-            <div class="col-md-3 shadow-sm p-3">
-                <h5 class="h5">Latest News</h5>
-                  <ul class="list-unstyled">
-                  <li class="nav-item">
-                      <a href="">IBT starts registration today</a>
+            <div class="col-md-3 d-none d-md-block p-3">
+                <h5 class="h5 text-uppercase">Latest News</h5>
+                  <ul class="list-unstyled list-group">
+                      {% for news in all_news %}
+                  <li class="list-group-item">
+                      <a class="text-info" href="#">{{ news.info_title }}</a>
                   </li>
-                      <li class="nav-item">
-                          <a href="">IBT starts registration</a>
-                  </li>
+                      {% endfor %}
               </ul>
             </div>
-            <div class="col-lg-4 mt-2">
-                <h5 class="text-center">Mission Statement</h5>
-                <p class="card card-body">Our mission is to create a teaching model that predicts and improves learning
-                    outcomes.Our goal is to see children from economically challenged communities
+            <div class="col-lg-6 shadow-sm px-4 mt-2">
+                <h4 class="text-uppercase text-center">Mission Statement</h4>
+                <p>Our mission is to create a <a href="{{ url_for('teaching_model') }}">
+                    teaching model</a> that predicts and improves learning
+                    outcomes. Our goal is to see children from economically challenged communities
                     afforded quality education at LITTLE or NO cost.
                     The Institute of Basic Technology also offers nonprofit educational consultancy.</p>
-            </div>
-            <div class="col-lg-5 mt-2">
-                <h5 class="text-center">Our History</h5>
-                <p class="card card-body">Ever wondered how to objectively measure the impact of donating books, food, money,
+                <h4 class="text-uppercase text-center">Our History</h4>
+                <p>Ever wondered how to objectively measure the impact of donating books, food, money,
                     etc. to a student in a socioeconomically challenged community? Is there a way to predict how such
                     student would fare prior to entering a senior high classroom? Well that is the goal of our
-                    institution and here’s how we got started.....
-
-
-
-  <a class="btn-sm mt-1 btn-primary text-center" data-toggle="collapse" href="#collapseExample" role="button"
-     aria-expanded="false" aria-controls="collapseExample">
-    See More
-  </a>
-</p>
-<div class="collapse" id="collapseExample">
-  <div class="card card-body">
-    <p>After more than 13 years of a devastating civil war,
+                    institution and here’s how we got started.
+                </p>
+                   <p> After more than 13 years of a devastating civil war,
                     the Liberian educational system is still struggling to emerge. For a country whose
                     population is a little over 4 million people with about 45% under the age of 15, the
                     future of the country is at stake. Although the government is striving to resuscitate the
@@ -92,8 +84,10 @@
         would later become Institute of Basic Technology (IBT) were taken in
                     the summer of 2007 by my wife, Sylvia M. Bollie, and me. We both knew from the time we
                     first met that we wanted to help shape the educational system in Liberia. In the summer of
-                    2007 Sylvia, then a medical student The George Washington University, volunteered teaching
-                    Biology at the University of Liberia. At the end of her five (5) week long internship, she
+                    2007 Sylvia, then a medical student at the <a href="#">George Washington University
+                       </a>, volunteered teaching
+                    Biology at the <a href="#">University of Liberia
+                           </a>. At the end of her five (5) week long internship, she
                     returned to the United States and successfully led a campaign to donate text books for the
                         University.</p>
                 <p>In spring of 2013 we became more intentional by providing scholarship
@@ -111,11 +105,15 @@
                     is a tax-exempt, federally recognized 501(c) (3) nonprofit organization whose main objective
                     is to provide guidance in STEM curriculum development and support to high schools serving
                     poorer communities in Liberia, West Africa.</p>
-  </div>
-</div>
-            </div>
+            </div><hr>
+            <div class="col-md-3 mt-2"> <h5 class="h5 text-uppercase">Events</h5>
+                <ul class="list-unstyled list-group"><li class="list-group-item"><a href=#>
+                   {% for event in all_events %}
+                    <span>{{ event.event_title }}</span></a></li>
+{% endfor %}</ul></div>
         </div>
     </div>
-</div>
+        </div>
+
 
 {% endblock %}

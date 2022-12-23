@@ -1,0 +1,161 @@
+{% extends 'layout.html' %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block page_content %}
+
+<div class="container text-center mt-5 mb-3">
+    <h4 class="h4 text-uppercase">Introduction to Python Programming</h4><hr>
+</div>
+   <h5 class="h5 text-center">Course Objectives</h5><hr>
+<div class="container mt-4">
+    <div class="row gx-4">
+
+        <div class="col-md-3 col-6 mb-2 shadow-sm p-2">
+            <h6>Week 1-3: Introduction to Programming with Python</h6>
+            <p>
+                 <a class="btn-sm mt-1 btn-primary text-center" data-toggle="collapse" href="#collapse2" role="button"
+     aria-expanded="false" aria-controls="collapse2">
+    See All Topics
+  </a>
+                </p>
+            <div class="collapse" id="collapse2">
+            <ul>
+                <li>Setting up a Programming Environment</li>
+                <li>Python on different OS</li>
+                <li>Running a hello world program</li>
+                <li>Naming and using variables</li>
+                <li>String data type</li>
+                <li>Number data type</li>
+                <li>Introducing and working with lists</li>
+                <li>Project # 1</li>
+            </ul>
+        </div>
+        </div>
+             <div class="col-md-3 col-6 mb-2 shadow-sm p-2">
+            <h6>Week 4-6: Programming Logic with Python</h6>
+            <p>
+                 <a class="btn-sm mt-1 btn-primary text-center" data-toggle="collapse" href="#collapse3" role="button"
+     aria-expanded="false" aria-controls="collapse3">
+    See All Topics
+  </a>
+                </p>
+            <div class="collapse" id="collapse3">
+            <ul>
+                <li>IF statements</li>
+                <li>Dictionaries</li>
+                <li>Working with user input</li>
+                <li>While loops</li>
+                <li>Using if and while loops</li>
+                <li>Project # 2</li>
+            </ul>
+        </div>
+        </div>
+        <div class="col-md-3 mb-2 col-6 shadow-sm p-2">
+            <h6>Week 7-10: Working with Functions in Python</h6>
+            <p>
+                 <a class="btn-sm mt-1 btn-primary text-center" data-toggle="collapse" href="#collapse4" role="button"
+     aria-expanded="false" aria-controls="collapse4">
+    See All Topics
+  </a>
+                </p>
+            <div class="collapse" id="collapse4">
+            <ul>
+                <li>Introduction to Functions</li>
+                   <li>Built-in Functions</li>
+                <li>Function Definitions</li>
+                <li>Passing Arguments</li>
+                <li>Return values</li>
+                <li>Passing a list</li>
+                <li>Passing arbitrary number of arguments</li>
+                <li>Functions and Modules</li>
+                <li>Project # 3</li>
+            </ul>
+        </div>
+        </div>
+        <div class="col-md-3 mb-2 col-6 shadow-sm p-2">
+            <h6>Week 11-12: Object Oriented Programming Basics</h6>
+            <p>
+                 <a class="btn-sm mt-1 btn-primary text-center" data-toggle="collapse" href="#collapse5" role="button"
+     aria-expanded="false" aria-controls="collapse5">
+    See All Topics
+  </a>
+                </p>
+            <div class="collapse" id="collapse5">
+            <ul>
+                <li>Introduction to Classes</li>
+                <li>Creating and using a class</li>
+                <li>Classes and instances</li>
+                <li>Inheritance</li>
+                <li>Importing classes</li>
+                <li>Inserting Text and Adding Slides</li>
+                <li>Inserting Images, Tables, etc.</li>
+                <li>Views in PowerPoint</li>
+                <li>Deleting Slides</li>
+                <li>Printing a Presentation</li>
+                <li>Project</li>
+            </ul>
+        </div>
+        </div>
+        </div>
+</div><hr>
+
+<div class="container text-center mt-5">
+    <h4 class="h4 text-uppercase">Python Programming Notes</h4><hr>
+</div>
+
+<div class="container mt-4">
+        <div class="col-md-1"></div>
+        <div class="col-md-12 col-lg-12 mb-2 col-12">
+            <div class="row gx-4">
+    {% for category in note_category %}
+            <div class="col-md-3 col-6 shadow-sm gx-4 py-1 mb-3">
+    <a href="{{ url_for('static', filename='notes/' + category.note_content)}}"
+       target="_blank">{{ category.note_name }}</a><br>
+         <span><i class="fa fa-calendar"></i>
+             &nbsp;{{ moment(category.upload_time).format('LL') }}
+             &nbsp;</span><br>
+         <span><i class="fa fa-clock-o"></i>
+             &nbsp;{{ moment(category.upload_time).fromNow().format('LLL') }}
+         </span>
+                <p class="mt-1 p-1">{{ category.note_description }}</p>
+            </div>
+    {% endfor %}
+        </div>
+         <div class="col-md-1"></div>
+    </div>
+</div>
+<div class="container text-center">
+    <h6><a href="{{ url_for('python_notes') }}">See All Python Notes</a></h6>
+</div>
+
+<div class="container mt-4">
+        <div class="col-md-1"></div>
+        <div class="col-md-12 col-lg-12 mb-2 col-12">
+            <div class="row gx-4">
+    {% for video in video_category %}
+            <div class="col-md-3 col-6 shadow-sm gx-4 py-1 mb-3">
+     <video controls class="w-100 h-70">
+        <source src="{{ url_for('static', filename='videos/' + video.video_content)}}" type="video/mp4">
+        Your browser does not support the video extension.
+    </video><br>
+                <span>
+             &nbsp;{{ video.video_name }}
+             &nbsp;</span><br>
+         <span><i class="fa fa-calendar"></i>
+             &nbsp;{{ moment(video.upload_time).format('LL') }}
+             &nbsp;</span><br>
+         <span><i class="fa fa-clock-o"></i>
+             &nbsp;{{ moment(video.upload_time).fromNow().format('LLL') }}
+         </span>
+                <p class="mt-1 p-1">{{ video.video_description }}</p>
+            </div>
+    {% endfor %}
+        </div>
+         <div class="col-md-1"></div>
+    </div>
+</div>
+<div class="container text-center">
+    <h6><a href="{{ url_for('python_videos') }}">See All Python Programming Videos</a></h6>
+</div>
+
+{% endblock %}

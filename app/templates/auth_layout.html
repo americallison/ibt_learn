@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+
+    <title>{% block title %} {% endblock %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <meta name="keywords" content="computer">
+    <meta name="description" content="">
+    <meta name="author" content="Americ Allison">
+
+    <!-- Site Icons -->
+
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <!-- Bootstrap CSS -->
+    {{ bootstrap.load_css() }}
+     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
+           rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    {% endblock %}
+</head>
+
+<!--Start top nav -->
+<body style="font-family: 'Garamond' ">
+
+    <!--Create content block for contents-->
+        {% block content %}
+        {% from 'bootstrap5/utils.html' import render_messages %}
+        <div class="container-fluid mt-2 p-1 text-center">
+            {{ render_messages() }}
+        </div>
+
+        <!--Create and end page_content block for main contents-->
+        {% block page_content %}{% endblock %}
+        <!--End content block-->
+        {% endblock %}
+         <hr>
+
+
+
+<!-- Start scripts -->
+{% block scripts %}
+        {{ bootstrap.load_js() }}
+        {{ moment.include_moment() }}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="{{ url_for('static', filename='jscript/google-map.js')}}"></script>
+    <script src="{{ url_for('static', filename='jscript/main.js')}}"></script>
+        <!-- Start Google Translate API script -->
+    <script type="text/javascript">
+                            function googleTranslateElementInit() {
+                            new google.translate.TranslateElement (
+                            {pageLanguage: 'en'},
+                            'google_translate_element'
+                            );
+                            }
+                        </script>
+
+                        <script type="text/javascript"
+                                src="https://translate.google.com/translate_a/element.js?
+cb=googleTranslateElementInit">
+
+                        </script>
+
+<!-- End Google Translate API script -->
+{% endblock %}
+<!-- End scripts -->
+</body>
+</html>

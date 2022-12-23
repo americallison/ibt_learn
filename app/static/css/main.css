@@ -1,8 +1,55 @@
 
 body {
     background-image: url('app/static/images/chicks.jpg');
+    font-size: 14px;
 }
 
-.my_color {
-    color: green;
+h1, h2, h3, h4, h5, h6 {
+color: #25316D;
+font-family: 'Raleway';
 }
+
+.bg-ibt {
+background-color: #25316D;
+}
+
+.bg-ibt-color {
+color: #FEF5AC;
+}
+
+.video_title {
+color: #25316D;
+background-color: #FEF5AC;
+}
+
+footer div ul li a:hover {
+color: #97D2EC;
+font-size: 17px;
+transition: 0.4s
+}
+
+nav ul li a {
+font-size: 13px;
+}
+
+nav ul li a:hover {
+color: #97D2EC;
+}
+
+nav ul li a:active {
+color: #97D2EC;
+}
+
+.btn-ibt {
+background-color: #97D2EC;
+color: #25316D;
+}
+
+@media screen and (min-width:786px) {
+.img_height {
+height: 400px;
+}
+}
+
+
+

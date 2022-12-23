@@ -43,62 +43,75 @@
 </head>
 
 <!--Start top nav -->
-<body style="font-family: 'Verdana' ">
+<body style="font-family: 'Raleway' ">
         <!-- Start main nav -->
-   <nav class="navbar p-3 navbar-expand-md navbar-dark sticky-top bg-dark">
-  <a class="navbar-brand" href="{{ url_for('index') }}">IBT</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse"
+   <nav class="navbar p-3 container-fluid navbar-expand-lg bg-ibt sticky-top">
+  <a class="navbar-brand text-secondary" href="{{ url_for('index') }}">IBT</a>
+  <button style="color:#FEF5AC" class="border navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-          aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+          aria-expanded="false" aria-label="Toggle navigation">Menu
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="{{ url_for('index') }}">
-            <i class="fa fa-home"></i>&nbsp;Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link bg-ibt-color" href="{{ url_for('index') }}">
+            <i class="fa fa-home"></i>&nbsp;Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('teaching_model') }}">
+        <a class="nav-link bg-ibt-color" href="{{ url_for('teaching_model') }}">
              <i class="fa fa-university"></i>&nbsp;Teaching Model</a>
       </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('staff') }}"><i class="fa fa-users"></i>&nbsp;Staff</a>
+            <a class="nav-link bg-ibt-color" href="{{ url_for('staff') }}"><i class="fa fa-users"></i>&nbsp;Staff</a>
       </li>
           <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('labs') }}">
+        <a class="nav-link bg-ibt-color" href="{{ url_for('labs') }}">
              <i class="fa fa-flask"></i>&nbsp;Labs</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+        <a class="nav-link bg-ibt-color dropdown-toggle" href="#" id="navbarDropdown" role="button"
            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            <i class="fa fa-code"></i>&nbsp;Programs
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Computer Literacy</a>
+          <a class="dropdown-item" href="{{ url_for('comp_literacy') }}">
+              <i class="fa fa-laptop"></i>&nbsp;Computer Literacy</a>
             <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Web Design & Design Thinking</a>
+          <a class="dropdown-item" href="{{ url_for('web_design') }}">
+              <i class="fa fa-sign-in"></i>&nbsp;Web Design & Design Thinking</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Python Programming</a>
+          <a class="dropdown-item" href="{{ url_for('python') }}">
+              <i class="fa fa-sign-in"></i>&nbsp;Python Programming</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Networking Fundamentals</a>
+            <a class="dropdown-item" href="{{ url_for('networking') }}">
+                <i class="fa fa-sign-in"></i>&nbsp;Networking Fundamentals</a>
         </div>
       </li>
          <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('donate') }}">
+        <a class="nav-link bg-ibt-color" href="{{ url_for('donate') }}">
              <i class="fa fa-gift"></i>&nbsp;Donate</a>
       </li>
          <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('events') }}">Events</a>
+        <a class="nav-link bg-ibt-color" href="{{ url_for('events') }}">Events</a>
       </li>
+        {% if current_user.user_name == "Admin" %}
+        <li class="nav-item">
+        <a class="nav-link bg-ibt-color" href="{{ url_for('upload_content') }}">Upload Content</a>
+      </li>
+         <li class="nav-item">
+        <a class="nav-link bg-ibt-color" href="{{ url_for('register') }}">
+            <i class="fa fa-user"></i>&nbsp;Register Student</a>
+      </li>
+        {% else %}
+        {% endif %}
         {% if current_user.is_anonymous %}
         <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('login') }}"><i class="fa fa-sign-in"></i>&nbsp;Login</a>
+            <a class="nav-link bg-ibt-color" href="{{ url_for('login') }}"><i class="fa fa-sign-in"></i>&nbsp;Login</a>
       </li>
         {% else %}
         <li class="nav-item">
-        <a class="nav-link" href="">Logout</a>
+        <a class="nav-link bg-ibt-color" href="{{ url_for('logout') }}"><i class="fa fa-sign-out"></i>&nbsp;Logout</a>
       </li>
         {% endif %}
     </ul>
@@ -145,33 +158,45 @@
 <!-- End newsletter -->
 
         <footer>
-            <div class="container-fluid text-white p-5 bg-dark">
+            <div class="container-fluid bg-ibt-color p-5 bg-ibt">
                 <div class="row">
                     <div class="col-md-3">
                         <h5 class="h5 text-white">
                             Institute of Basic Technology
                         </h5>
+                        <p>Bridging the Gap in STEM Education</p>
+                    </div>
+                     <div class="col-md-3">
+                        <h5 class="h5 text-white">
+                            Programs
+                        </h5>
                         <ul class="list-unstyled">
-                            <li><a class="text-white text-decoration-none" href="">About Us</a></li>
-                            <li><a class="text-white text-decoration-none" href="">Courses</a></li>
+                            <li><a class="bg-ibt-color text-decoration-none"
+                                   href="{{ url_for('comp_literacy') }}">
+                                <i class="fa fa-laptop"></i>&nbsp;Computer Literacy</a></li>
+                            <li><a class="bg-ibt-color text-decoration-none mt-2"
+                                   href="{{ url_for('web_design') }}">
+                                <i class="fa fa-home"></i>&nbsp;Web Design & Design Thinking</a></li>
+                             <li><a class="bg-ibt-color text-decoration-none mt-2"
+                                    href="{{ url_for('python') }}">
+                                 <i class="fa fa-code"></i>&nbsp;Python Programming</a></li>
+                             <li><a class="bg-ibt-color text-decoration-none mt-2"
+                                    href="{{ url_for('networking') }}">
+                                 <i class="fa fa-sign-in"></i>&nbsp;Networking Fundamentals</a></li>
                         </ul>
                     </div>
                      <div class="col-md-3">
                         <h5 class="h5 text-white">
-                            Institute of Basic Technology
+                            Useful Links
                         </h5>
                         <ul class="list-unstyled">
-                            <li><a class="text-white text-decoration-none" href="">About Us</a></li>
-                            <li><a class="text-white text-decoration-none" href="">Courses</a></li>
-                        </ul>
-                    </div>
-                     <div class="col-md-3">
-                        <h5 class="h5 text-white">
-                            Institute of Basic Technology
-                        </h5>
-                        <ul class="list-unstyled">
-                            <li><a class="text-white text-decoration-none" href="">About Us</a></li>
-                            <li><a class="text-white text-decoration-none" href="">Courses</a></li>
+                            <li><a class="bg-ibt-color text-decoration-none" href="">
+                                <i class="fa fa-university"></i>&nbsp;Teaching Model</a></li>
+                             <li><a class="bg-ibt-color text-decoration-none" href="">
+                                 <i class="fa fa-users"></i>&nbsp;Our Staff</a></li>
+                             <li><a class="bg-ibt-color text-decoration-none" href="">
+                                 <i class="fa fa-flask"></i>&nbsp;Labs Tour</a></li>
+                            <li><a class="bg-ibt-color text-decoration-none" href="">Events</a></li>
                         </ul>
                     </div>
                      <div class="col-md-3">
@@ -179,26 +204,38 @@
                             Contact Us
                         </h5>
                         <ul class="list-unstyled">
-                            <li><a class="text-white text-decoration-none" href="">About Us</a></li>
-                            <li><a class="text-white text-decoration-none" href="">Courses</a></li>
+                            <li><i class="fa fa-map"></i>&nbsp;<a class="bg-ibt-color text-decoration-none"
+                                   href="">72nd Boulevard, Kpelle Town Junction,
+                            Behind Seta Drug Store</a></li>
+                            <li><i class="fa fa-phone"></i>&nbsp;<a class="bg-ibt-color text-decoration-none" href="">
+                                0775343434</a></li>
+                            <li><i class="fa fa-reply"></i>&nbsp; <a class="bg-ibt-color text-decoration-none" href="">ibt@gmail.com</a></li>
                         </ul>
-                <ul class="list-group list-group-horizontal list-unstyled">
+                <ol class="list-group list-group-horizontal list-unstyled">
                 <li class="text-center list-group-item">
-                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-facebook-square"></i></a>
                 </li>
                     <li class="list-group-item">
                     <a href=""><i class="fa fa-instagram"></i></a>
                 </li>
                     <li class="list-group-item">
-                    <a href=""><i class="fa fa-youtube"></i></a>
+                    <a class="text-danger" href=""><i class="fa fa-youtube"></i></a>
                 </li>
                     <li class="list-group-item">
                     <a href=""><i class="fa fa-twitter"></i></a>
                 </li>
-                </ul>
+                </ol>
             </div>
-                    </div>
+                    </div><hr>
+                 <div class="text-center">
+				<p>Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script> |
+                    &nbsp;Institute of Basic Technology |
+                    All rights reserved | Designed by
+                    <a style="color:#97D2EC;" href="#" target="_blank">Pabs Tech</a></p>
+			</div>
                 </div>
+
         </footer>
 
 

@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %} {{title}} {% endblock %}
+
+{% block page_content %}
+<div class="container mt-4">
+<div class="page-header">
+    <h2 class="h2 text-danger">The requested page cannot be found</h2>
+    <p class="h5 text-secondary">Please check the link and try again</p>
+    <p class="h6 mb-5"><a href="{{ url_for('index') }}">Go to Home Page>></a></p>
+</div>
+</div>
+{% endblock %}

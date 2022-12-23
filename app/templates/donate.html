@@ -10,4 +10,14 @@
     </div>
 </div>
 
+<div class="container">
+    {% for user in users %}
+       {{ user.full_name }}<br>
+       {{ user.program }}<br>
+    {{ user.contact }}<br>
+    {{ user.address }}<hr>
+
+    {% endfor %}
+</div>
+
 {% endblock %}

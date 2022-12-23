@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block page_content %}
+
+<div class="container text-center mt-5">
+    <h4 class="h4 text-uppercase">Computer Literacy Videos</h4><hr>
+</div>
+
+<div class="container">
+        <div class="col-md-1"></div>
+        <div class="col-md-12 col-lg-12 mb-2 col-12">
+            <div class="row gx-4">
+    {% for video in video_category.items %}
+            <div class="col-md-3 col-6 shadow-sm gx-4 py-1 mb-1">
+    <video controls class="w-100 h-70">
+        <source src="{{ url_for('static', filename='videos/' + video.video_content)}}" type="video/mp4">
+        Your browser does not support the video extension.
+    </video><br>
+                <span>
+             &nbsp;{{ video.video_name }}
+             &nbsp;</span><br>
+         <span><i class="fa fa-calendar"></i>
+             &nbsp;{{ moment(video.upload_time).format('LL') }}
+             &nbsp;</span><br>
+         <span><i class="fa fa-clock-o"></i>
+             &nbsp;{{ moment(video.upload_time).fromNow().format('LLL') }}
+         </span>
+                <p class="mt-1 p-1">{{ video.video_description }}</p>
+            </div>
+    {% endfor %}
+        </div>
+         <div class="col-md-1"></div>
+    </div>
+</div>
+
+<div class="text-center">
+    <a href="{{ url_for('comp_literacy_videos', page=video_category.prev_num) }}"
+       class="btn-sm primary-btn
+       {% if video_category.page == 1 %}disabled{% endif %}">
+        <i class="fa fa-arrow-left"></i>&nbsp;Prev
+    </a>
+
+{% for page_num in video_category.iter_pages() %}
+        {% if page_num %}
+
+        <div class="d-md-inline text-center d-inline d-lg-inline mb-2 ml-auto">
+            {% if video_category.page == page_num %}
+            <a href="{{ url_for('comp_literacy_videos', page=page_num) }}"
+               class="primary-btn text-white p-1 rounded-lg bg-secondary">
+                &nbsp;<strong>{{ page_num }}</strong>
+            </a>
+            {% else %}
+            <a href="{{ url_for('comp_literacy_videos', page=page_num) }}"
+               class="primary-btn text-secondary">
+                {{ page_num }}
+            </a>
+            {% endif %}
+        {% else %}
+            ...
+        {% endif %}
+    {% endfor %}
+    <a href="{{ url_for('comp_literacy_videos', page=video_category.next_num) }}"
+       class="primary-btn btn-sm
+       {% if video_category.page == video_category.pages %}disabled{% endif %}">
+        Next&nbsp;<i class="fa fa-arrow-right"></i>
+    </a>
+</div>
+</div>
+<p class="text-center mt-3">
+   Page {{ video_category.page }} of {{ video_category.pages }}
+</p>
+<hr>
+
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block page_content %}
+
+<div class="container text-center mt-5">
+    <h4 class="h4 text-uppercase">Web Design Videos</h4><hr>
+</div>
+
+<div class="container mt-4">
+        <div class="col-md-1"></div>
+        <div class="col-md-12 col-lg-12 mb-2 col-12">
+            <div class="row gx-4">
+    {% for category in video_category %}
+    {% for video in category.videos %}
+            <div class="col-md-3 col-6 shadow-sm gx-4 py-1 mb-3">
+    <a href="{{ url_for('static', filename='videos/' + video.video_content)}}"
+       target="_blank">{{ video.video_name }}</a><br>
+         <span><i class="fa fa-calendar"></i>
+             &nbsp;{{ moment(video.upload_time).format('LL') }}
+             &nbsp;</span><br>
+         <span><i class="fa fa-clock-o"></i>
+             &nbsp;{{ moment(video.upload_time).fromNow().format('LLL') }}
+         </span>
+                <p class="mt-1 p-1">{{ video.video_description }}</p>
+            </div>
+    {% endfor %}
+    {% endfor %}
+        </div>
+         <div class="col-md-1"></div>
+    </div>
+</div>
+
+{% endblock %}
