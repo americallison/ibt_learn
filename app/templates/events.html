@@ -3,11 +3,23 @@
 {% block page_content %}
 
 <div class="container text-center mt-5">
-    <div class="row">
-        <div class="col-lg-12">
             <h4 class="text-uppercase">Our Events</h4>
         </div>
+
+<div class="container">
+        <div class="col-md-1"></div>
+        <div class="col-md-12 col-lg-12 mb-2 col-12">
+            <div class="row gx-4">
+    {% for event in get_all_events %}
+            <div class="col-md-3 col-6 shadow-sm gx-4 py-1 mb-1">
+                <a href="{{ url_for('event', event_id=event.event_id)}}"> {{ event.event_title }}</a><br>
+            </div>
+    {% endfor %}
+        </div>
+         <div class="col-md-1"></div>
     </div>
 </div>
+
+
 
 {% endblock %}

@@ -27,6 +27,44 @@
         </div>
          <div class="col-md-1"></div>
     </div>
+</div><hr/>
+
+<div class="text-center">
+    <a href="{{ url_for('python_notes', page=note_category.prev_num) }}"
+       class="btn-sm primary-btn
+       {% if note_category.page == 1 %}disabled{% endif %}">
+        <i class="fa fa-arrow-left"></i>&nbsp;Prev
+    </a>
+
+{% for page_num in note_category.iter_pages() %}
+        {% if page_num %}
+
+        <div class="d-md-inline text-center d-inline d-lg-inline mb-2 ml-auto">
+            {% if note_category.page == page_num %}
+            <a href="{{ url_for('python_notes', page=page_num) }}"
+               class="bg-secondary text-white rounded p-1">
+                &nbsp;<strong>{{ page_num }}</strong>
+            </a>
+            {% else %}
+            <a href="{{ url_for('python_notes', page=page_num) }}"
+               class="primary-btn text-light">
+                {{ page_num }}
+            </a>
+            {% endif %}
+        {% else %}
+            ...
+        {% endif %}
+    {% endfor %}
+    <a href="{{ url_for('python_notes', page=note_category.next_num) }}"
+       class="primary-btn btn-sm
+       {% if note_category.page == note_category.pages %}disabled{% endif %}">
+        Next&nbsp;<i class="fa fa-arrow-right"></i>
+    </a>
 </div>
+</div>
+<p class="text-center mt-3">
+   Page {{ note_category.page }} of {{ note_category.pages }}
+</p>
+<hr>
 
 {% endblock %}

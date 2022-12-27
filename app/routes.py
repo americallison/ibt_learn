@@ -248,8 +248,15 @@ def donate():
 
 
 @app.route('/events')
-def events():
-    return render_template('events.html')
+def all_events():
+    get_all_events = Events.query.all()
+    return render_template('events.html', get_all_events=get_all_events)
+
+
+@app.route('/events/<int:event_id>')
+def event(event_id):
+    event_to_get = Events.query.filter_by(event_id=event_id).one()
+    return render_template('event_details.html', event_to_get=event_to_get)
 
 
 @app.route('/notes_upload', methods=['GET', 'POST'])
@@ -347,6 +354,9 @@ def event_upload():
                            event_image=filename,
                            start_date=form.start_date.data,
                            end_date=form.end_date.data,
+                           from_time=form.from_time.data,
+                           to_time=form.to_time.data,
+                           registration_link=form.registration_link.data,
                            user_id=current_user.id)
             db.session.add(event)
             db.session.commit()

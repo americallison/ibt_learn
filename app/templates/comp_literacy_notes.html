@@ -27,7 +27,7 @@
         </div>
          <div class="col-md-1"></div>
     </div>
-</div>
+</div><hr />
 
 <div class="text-center">
     <a href="{{ url_for('comp_literacy_notes', page=note_category.prev_num) }}"
@@ -42,8 +42,8 @@
         <div class="d-md-inline text-center d-inline d-lg-inline mb-2 ml-auto">
             {% if note_category.page == page_num %}
             <a href="{{ url_for('comp_literacy_notes', page=page_num) }}"
-               class="primary-btn text-white">
-                <strong>{{ page_num }}</strong>
+               class="bg-secondary text-white rounded p-1">
+                &nbsp;<strong>{{ page_num }}</strong>
             </a>
             {% else %}
             <a href="{{ url_for('comp_literacy_notes', page=page_num) }}"

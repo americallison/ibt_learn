@@ -7,8 +7,8 @@
 
 <div class="container mt-4">
     <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-lg-4 bg-light mx-2 shadow-sm p-4 rounded card">
+        <div class="col-md-3"></div>
+        <div class="col-lg-6 bg-light mx-2 shadow-sm p-4 rounded card">
             <form action="{{ url_for('event_upload') }}" method="POST" enctype="multipart/form-data">
                 <h4 class="h5 text-center"><i class="fa fa-plus-o"></i>&nbsp;Upload Event</h4>
 <hr>
@@ -18,12 +18,14 @@
         {{ render_field(form.event_description) }}
         {{ render_field(form.event_image) }}
                  {{ render_form_row([form.start_date, form.end_date]) }}
+                   {{ render_form_row([form.from_time, form.to_time]) }}
+                {{ render_field(form.registration_link) }}
        {{ render_field(form.add_event,
             class="primary-btn mt-2 mb-3") }}
     </form>
 
         </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-3"></div>
     </div>
 </div>
 

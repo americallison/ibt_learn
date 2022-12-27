@@ -66,6 +66,9 @@ class Events(db.Model):
     event_image = db.Column(db.String(255), nullable=False, default='default.jpg')
     start_date = db.Column(db.DateTime)
     end_date = db.Column(db.DateTime)
+    from_time = db.Column(db.Time)
+    to_time = db.Column(db.Time)
+    registration_link = db.Column(db.String(255))
     upload_time = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 

@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block page_content %}
+
+<div class="container mt-4">
+    <h5 class="h5 text-center">Event Details</h5><hr />
+    <div class="row">
+        <div class="col-md-6">
+    <img class="w-100 shadow rounded" src="{{ url_for('static', filename='events/'+event_to_get.event_image) }}"
+         height="350px"/><br />
+        </div>
+        <div class="col-md-6 mt-4 mt-sm-0">
+            <h5 class="h5">{{ event_to_get.event_title }}</h5>
+            <p>{{ event_to_get.event_description }}</p>
+         <span>{{ moment(event_to_get.start_date).format('LL') }}</span>&nbsp;to
+            <span>{{ moment(event_to_get.end_date).format('LL') }}</span>
+    <p>Time: {{ event_to_get.from_time }} to {{ event_to_get.to_time }}</p>
+        </div>
+
+        </div>
+</div>
+
+{% endblock %}

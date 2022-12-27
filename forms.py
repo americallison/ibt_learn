@@ -1,8 +1,9 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, SubmitField, \
-    PasswordField, BooleanField, TextAreaField, DateField
+    PasswordField, BooleanField, TextAreaField, DateField, \
+    DateTimeField, TimeField
 from wtforms.validators import DataRequired, Length, Optional, \
-    EqualTo, Email, ValidationError
+    EqualTo, Email, ValidationError, URL
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from models import User
 
@@ -114,6 +115,9 @@ class UploadEventForm(FlaskForm):
                                             ['jpg', 'jpeg', 'png', 'webp'])])
     start_date = DateField('Start Date', validators=[DataRequired()])
     end_date = DateField('End Date', validators=[DataRequired()])
+    from_time = TimeField('Start time', validators=[DataRequired()])
+    to_time = TimeField('End Time', validators=[DataRequired()])
+    registration_link = StringField('Registration Link', validators=[DataRequired(),URL()])
     add_event = SubmitField('Upload Event')
 
 

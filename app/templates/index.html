@@ -107,8 +107,11 @@
                     poorer communities in Liberia, West Africa.</p>
             </div><hr>
             <div class="col-md-3 mt-2"> <h5 class="h5 text-uppercase">Events</h5>
-                <ul class="list-unstyled list-group"><li class="list-group-item"><a href=#>
+
+ <ul class="list-unstyled list-group">
                    {% for event in all_events %}
+                <li class="list-group-item">
+                    <a href="{{ url_for('all_events') }}">
                     <span>{{ event.event_title }}</span></a></li>
 {% endfor %}</ul></div>
         </div>
