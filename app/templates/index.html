@@ -14,23 +14,25 @@
              class="d-block img_height w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Welcome to Institute of Basic Technology</h5>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <p>Bridging the Gap in STEM Education</p>
         </div>
       </div>
       <div class="carousel-item">
         <img src="{{ url_for('static', filename='images/chemistry_lab.jpg')}}"
              class="d-block img_height w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h5>IBT is training STEM students to excel</h5>
+          <p>Enhance your computer knowledge today</p>
+            <button class="btn bg-light">Enroll Now</button>
         </div>
       </div>
       <div class="carousel-item">
         <img src="{{ url_for('static', filename='images/library.jpg')}}"
              class="d-block img_height w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          <h5>The best STEM school in Liberia</h5>
+          <p>Do not be left behind in the digital world</p>
+             <button class="btn bg-light">Enroll Now</button>
         </div>
       </div>
     </div>
@@ -47,7 +49,8 @@
 
 <div class="container-fluid">
         <div class="text-center mt-4">
-                <a class="btn-ibt p-3 mt-2 text-decoration-none rounded" href="#">Partnering Schools</a>
+                <a class="btn-ibt p-3 mt-2 text-decoration-none rounded"
+                   href="{{ url_for('partnering_school') }}">Partnering Schools</a>
                 <a class="btn-ibt p-3 mt-2 text-decoration-none rounded" href="#">Read Our Articles</a>
         </div><hr>
     <div class="container-fluid text-dark p-4 rounded mt-2">
@@ -62,8 +65,8 @@
                       {% endfor %}
               </ul>
             </div>
-            <div class="col-lg-6 shadow-sm px-4 mt-2">
-                <h4 class="text-uppercase text-center">Mission Statement</h4>
+            <div class="col-lg-6 shadow-sm px-4 border rounded-lg border-info mt-2">
+                <h4 class="text-uppercase text-center p-3">Mission Statement</h4>
                 <p>Our mission is to create a <a href="{{ url_for('teaching_model') }}">
                     teaching model</a> that predicts and improves learning
                     outcomes. Our goal is to see children from economically challenged communities
@@ -106,14 +109,9 @@
                     is to provide guidance in STEM curriculum development and support to high schools serving
                     poorer communities in Liberia, West Africa.</p>
             </div><hr>
-            <div class="col-md-3 mt-2"> <h5 class="h5 text-uppercase">Events</h5>
-
- <ul class="list-unstyled list-group">
-                   {% for event in all_events %}
-                <li class="list-group-item">
-                    <a href="{{ url_for('all_events') }}">
-                    <span>{{ event.event_title }}</span></a></li>
-{% endfor %}</ul></div>
+            <div class="col-md-3 mt-4 mt-md-2 text-info"> <h5 class="h5 mt-1 text-uppercase">Events</h5>
+<p><a href="{{ url_for('all_events') }}">See All Events >>></a></p>
+ </div>
         </div>
     </div>
         </div>

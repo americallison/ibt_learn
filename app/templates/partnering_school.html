@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block page_content %}
+
+<div class="container-fluid bg-light p-3">
+    <p><a href="{{ url_for('index') }}">Home&nbsp;</a>/&nbsp;Partnering Schools</p>
+</div>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-7">
+<p>IBT presently partners with several high schools around Monrovia. We help students of these schools
+    enhance their knowledge on conducting lab activities to prepare them for the West African
+    Senior Secondary School Examinations.
+</p>
+        </div>
+        <div class="col-md-5 card p-3 bg-light">
+<h4 class="h4 mx-auto fw-light">
+    List of Schools
+</h4>
+<ol>
+    <li>Jones Academy</li>
+    <li>Faith Academy</li>
+    <li>St. Paul Presbyterian</li>
+</ol>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

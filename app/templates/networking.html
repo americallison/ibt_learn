@@ -3,10 +3,19 @@
 
 {% block page_content %}
 
-<div class="container text-center mt-5">
-    <h4 class="h4 text-uppercase">Networking Fundamentals Notes</h4><hr>
+<div class="container-fluid bg-light p-3">
+    <p><a href="{{ url_for('index') }}">Home&nbsp;</a>/&nbsp;Networking Fundamentals</p>
 </div>
- <h5 class="h5 text-center">Course Contents</h5><hr>
+
+<div class="container mt-4 mb-3">
+    <h5 class="h5 text-center mt-2">Course Overview</h5>
+    <p>This course is designed to with focus on absolute beginners in the computer sphere. Topic covered
+    in this module will prepare you for major professional exams (CCNA, Comptia N+, etc.). You will be
+    exposed to network technologies, including types of network, network architecture, network administration,
+    network security, etc.</p>
+</div><hr />
+
+ <h5 class="h5 text-center">Course Contents</h5>
 <div class="container mt-4">
     <div class="row gx-4">
 
@@ -103,7 +112,7 @@
         </div>
         </div>
         </div><hr>
-        <h5 class="h5 text-center mt-2">Course Notes</h5><hr>
+        <h5 class="h5 text-center mt-2">Course Notes</h5>
 <div class="container mt-4">
         <div class="col-md-1"></div>
         <div class="col-md-12 col-lg-12 mb-2 col-12">
@@ -111,7 +120,7 @@
     {% for category in note_category %}
             <div class="col-md-3 col-6 shadow-sm gx-4 py-1 mb-3">
     <a href="{{ url_for('static', filename='notes/' + category.note_content)}}"
-       target="_blank">{{ category.note_name }}</a><br>
+       target="_blank"><i class="fa fa-book"></i>&nbsp;{{ category.note_name }}</a><br>
          <span><i class="fa fa-calendar"></i>
              &nbsp;{{ moment(category.upload_time).format('LL') }}
              &nbsp;</span><br>
@@ -130,7 +139,7 @@
     See All Networking Notes</a></h6>
 </div><hr />
 
-<h5 class="h5 text-center mt-2">Course Videos</h5><hr>
+<h5 class="h5 text-center mt-2">Course Videos</h5>
 <div class="container mt-4">
         <div class="col-md-1"></div>
         <div class="col-md-12 col-lg-12 mb-2 col-12">

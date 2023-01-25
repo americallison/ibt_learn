@@ -82,6 +82,9 @@ def videos():
 def teaching_model():
     return render_template('teaching_model.html')
 
+@app.route('/partnering_school')
+def partnering_school():
+    return render_template('partnering_school.html')
 
 @app.route('/comp_literacy')
 def comp_literacy():

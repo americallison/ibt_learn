@@ -3,8 +3,11 @@
 
 {% block page_content %}
 
-<div class="container mt-5 mb-3">
-    <h4 class="h4 text-center shadow-sm rounded p-3 text-uppercase">Introduction to Python Programming</h4>
+<div class="container-fluid bg-light p-3">
+    <p><a href="{{ url_for('index') }}">Home&nbsp;</a>/&nbsp;Partnering Schools</p>
+</div>
+
+<div class="container mt-4 mb-3">
     <h5 class="h5 text-center mt-2">Course Overview</h5>
     <p>This course is designed to equip a person with the foundational knowledge needed
     to become a programmer particularly with Python. After going through the course, it is
@@ -113,7 +116,7 @@
     {% for category in note_category %}
             <div class="col-md-3 col-6 shadow-sm gx-4 py-1 mb-3">
     <a href="{{ url_for('static', filename='notes/' + category.note_content)}}"
-       target="_blank">{{ category.note_name }}</a><br>
+       target="_blank"><i class="fa fa-book"></i>&nbsp;{{ category.note_name }}</a><br>
          <span><i class="fa fa-calendar"></i>
              &nbsp;{{ moment(category.upload_time).format('LL') }}
              &nbsp;</span><br>
